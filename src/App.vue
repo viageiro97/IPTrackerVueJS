@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Hero />
+    <Hero @getIPInfoData="getIPInfoData" />
     <IPInfo :ipInfoData="ipInfoData" :loading="loading" />
   </div>
 </template>
@@ -14,16 +14,15 @@ export default {
   components: { Hero, IPInfo },
   data() {
     return {
-      ip: "",
       loading: true,
       ipInfoData: {},
     };
   },
   methods: {
-    async getIPInfoData() {
+    async getIPInfoData(ip = "") {
       try {
         this.loading = true;
-        const response = await fetch(`https://ipapi.co/${this.ip}/json/`);
+        const response = await fetch(`https://ipapi.co/${ip}/json/`);
         const data = await response.json();
         this.ipInfoData = data;
         this.loading = false;

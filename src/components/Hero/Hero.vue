@@ -6,7 +6,7 @@
         <input
           type="text"
           name=""
-          placeholder="Search for any IP address"
+          placeholder="Search for any IP address ex: 168.10.1.29"
           id=""
           v-model="ip"
         />
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { ValidateIPaddress } from "./../../validations/ip";
 export default {
   name: "Hero",
   data() {
@@ -28,11 +29,17 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("submetendo");
-      if (!this.ip) {
+      if (this.ip.length === 0) {
         alert("Insira um endereco ip!");
         return;
       }
+
+      if (!ValidateIPaddress(this.ip)) {
+        alert("O endereço de IP fornecido não é valido!");
+        return;
+      }
+
+      this.$emit("getIPInfoData", this.ip);
     },
   },
 };
