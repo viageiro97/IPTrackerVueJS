@@ -1,0 +1,42 @@
+.ip-details {
+  position: relative;
+  z-index: 1;
+  transform: translateY(-50%);
+  border-radius: 8px;
+  padding: 20px 10px;
+  min-height: 140px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: white;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.ip-details div {
+  text-align: center;
+  position: relative;
+}
+
+.ip-details div:not(:first-child) ::before {
+  content: "";
+  background: hsla(0, 0%, 59%, 0.075);
+  width: 2px;
+  height: 80%;
+  top: 10%;
+  position: absolute;
+  left: 0;
+}
+.ip-details span {
+  display: block;
+  color: hsl(0, 0%, 59%);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.ip-details p,
+h1 {
+  color: hsl(0, 0%, 17%);
+  font-weight: 600;
+  font-size: 1.35rem;
+}
