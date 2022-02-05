@@ -15,6 +15,7 @@
 .ip-details div {
   text-align: center;
   position: relative;
+  padding: 0 5px;
 }
 
 .ip-details div:not(:first-child) ::before {
@@ -39,4 +40,38 @@ h1 {
   color: hsl(0, 0%, 17%);
   font-weight: 600;
   font-size: 1.35rem;
+}
+
+@media (max-width: 998px) {
+  .ip-details {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+  }
+  .ip-details span {
+    font-size: 0.8rem;
+  }
+  .ip-details p,
+  h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .ip-details {
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+  }
+
+  .ip-details div:not(:first-child) ::before {
+    display: none;
+  }
+
+  .ip-details span {
+    font-size: 0.8rem;
+  }
+
+  .ip-details p,
+  h1 {
+    font-size: 1.1rem;
+  }
 }

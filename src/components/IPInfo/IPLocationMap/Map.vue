@@ -2,17 +2,22 @@
   <div id="map">
     <l-map :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+      <l-control-zoom position="bottomright"></l-control-zoom>
+      <l-circle-marker :lat-lng="center" :radius="40" color="blue" />
     </l-map>
   </div>
 </template>
 
 <script>
-import { LMap, LTileLayer } from "vue2-leaflet";
+import L from "leaflet";
+import { LMap, LTileLayer, LControlZoom, LCircleMarker } from "vue2-leaflet";
 
 export default {
   components: {
     LMap,
     LTileLayer,
+    LControlZoom,
+    LCircleMarker,
   },
   props: {
     zoom: Number,
@@ -24,6 +29,11 @@ export default {
       attribution:
         '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       bounds: null,
+      icon: L.icon({
+        iconUrl: "https://img.icons8.com/office/16/000000/place-marker--v1.png",
+        iconSize: [32, 37],
+        iconAnchor: [16, 37],
+      }),
     };
   },
   methods: {},
